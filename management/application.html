@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Applications </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Applications ">
+    <meta name="generator" content="docfx 2.34.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="applications">Applications</h1>
+
+<h2 id="createclientapikeyforapplication"><code>CreateClientApiKeyForApplication()</code></h2>
+<p>Create a <a href=""><code>ClientApiKeySet &lt;ClientApiKeySetObj&gt;</code></a> for the specified application.</p>
+<p><strong>Http</strong></p>
+<pre><code>    POST api/Tenants/{tenantId}/ClientApiKeySets/Keys
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    ID of the tenant the application belongs to.
+<code>String applicationId</code>
+    ID of the application for this request
+<code>String description</code>
+    Description of the :ref:<code>ClientApiKeySet &lt;ClientApiKeySetObj&gt;</code></p>
+<p><strong>Security</strong>
+    Allowed by Account Administrator :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    The created :ref:<code>ClientApiKeySet &lt;ClientApiKeySetObj&gt;</code></p>
+<p><strong>Notes</strong>
+    For HTTP requests and responses, the JSON serialized ClientApiKeySet object Looks like:</p>
+<p>.. _ClientApiKeySetObj: </p>
+<p>.. highlight:: C#</p>
+<pre><code>    {
+        &quot;AppUri&quot;: &quot;appuri&quot;,
+        &quot;CreateFirstKey&quot;: false,
+        &quot;DisplayName&quot;: &quot;displayname&quot;,
+        &quot;RequiredResource&quot;:  { },
+        &quot;TenantId&quot;: &quot;tenantid&quot;
+    }
+</code></pre><p>|</p>
+<hr>
+<h2 id="getclientapikeycollectionfromapplication"><code>GetClientApiKeyCollectionFromApplication()</code></h2>
+<p>Get the <a href=""><code>ClientApiKeyCollection &lt;ClientApiKeyCollectionObj&gt;</code></a> for the specified applicaiton.</p>
+<p><strong>Http</strong></p>
+<pre><code>GET api/Tenants/{tenantId}/ClientApiKeySets/Keys
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    ID of the tenant the application belongs to.
+<code>String applicationId</code>
+    ID of the application for this request</p>
+<p><strong>Security</strong>
+    Allowed by Account Administrator :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    :ref:<code>ClientApiKeyCollection &lt;ClientApiKeyCollectionObj&gt;</code> for the specified applicaiton.</p>
+<p><strong>Notes</strong>
+    For HTTP requests and responses, the JSON serialized ClientApiKeyCollection object Looks like:</p>
+<pre><code class="lang-csharp"> {
+    &quot;Id&quot;: &quot;id&quot;,
+    &quot;Keys&quot;: []
+ }
+</code></pre><hr>
+<h2 id="deleteclientapikeyfromapplication"><code>DeleteClientApiKeyFromApplication()</code></h2>
+<p>Delete a specified :ref:<code>ClientApiKeySet &lt;ClientApiKeySetObj&gt;</code>.</p>
+<p><strong>Http</strong></p>
+<p>::</p>
+<pre><code>DELETE api/Tenants/{tenantId}/ClientApiKeySets/Keys
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    ID of the tenant the application belongs to.
+<code>String applicationId</code>
+    ID of the application for this request
+<code>String keyId</code>
+    ID of the :ref:<code>ClientApiKeySet &lt;ClientApiKeySetObj&gt;</code> to be deleted.</p>
+<p><strong>Security</strong>
+    Allowed by Account Administrator :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    HTTP status code - 200 OK if the :ref:<code>ClientApiKeySet &lt;ClientApiKeySetObj&gt;</code> was deleted.</p>
+<p>|</p>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
