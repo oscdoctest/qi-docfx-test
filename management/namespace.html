@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace ">
+    <meta name="generator" content="docfx 2.34.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="namespace">Namespace</h1>
+
+<p>A Namespace is a collection of Data Streams.</p>
+<pre><code>The following code shows the JSON-serialized Namespace object for HTTP requests and responses:
+</code></pre><pre><code class="lang-csharp"> {
+    &quot;Id&quot;: &quot;id&quot;,
+    &quot;TenantId&quot;: &quot;tenantid&quot;,                //GUID of the Tenant that this Namespace corresponds to
+    &quot;Description&quot;: &quot;description&quot;,          //Description of this Namespace.
+    &quot;TierId&quot;: &quot;tierid&quot;,                    //GUID of the Tier that this Namespace is associated with.
+    &quot;ThroughputUnits&quot;: 0,                  //Number of Throughput units for this Namespace.
+    &quot;StorageUnits&quot;: 0,                     //Number of Storage units for this Namespace.
+    &quot;CalculationUnits&quot;: 0,                 //Number of Calculation units for this Namespace.
+    &quot;State&quot;: 0                             //Current state of this Namespace.
+ }
+</code></pre><h2 id="getall"><code>GetAll()</code></h2>
+<p>Returns all Namespaces owned by the specified tenant.</p>
+<p><strong>Http</strong></p>
+<p>::</p>
+<pre><code>GET api/Tenants/{tenantId}/Namespaces
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    The :ref:<code>Tenant &lt;TenantObj&gt;</code> identifier for the request</p>
+<p><strong>Security</strong>
+    Allowed by Account Member :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    An array of all :ref:<code>Namespace &lt;NamespaceObj&gt;</code> objects for the specified tenantId</p>
+<p>|</p>
+<hr>
+<h2 id="getnamespacebyid"><code>GetNamespaceById()</code></h2>
+<p>Returns the Namespace with the specified Id.</p>
+<p><strong>Http</strong></p>
+<p>::</p>
+<pre><code>GET api/Tenants/{tenantId}/Namespaces/{namespaceId}
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    The account identifier for the request
+<code>String namespaceId</code>
+    The Namespace identifier for this request</p>
+<p><strong>Security</strong>
+    Allowed by Account Member :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    A :ref:<code>Namespace &lt;NamespaceObj&gt;</code> object with the specified namespaceId</p>
+<p>|</p>
+<hr>
+<h2 id="create"><code>Create()</code></h2>
+<p>Creates a namespace.</p>
+<p><strong>Http</strong></p>
+<p>::</p>
+<pre><code>POST api/Tenants/{tenantId}/Namespaces
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    The idenfifier for the account the namespace is to be created for
+<code>Namespace namespaceObj</code>
+    The :ref:<code>Namespace &lt;NamespaceObj&gt;</code> to be created</p>
+<p><strong>Security</strong>
+    Allowed by Account Administrator :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    The created :ref:<code>Namespace &lt;NamespaceObj&gt;</code> object</p>
+<p>|</p>
+<hr>
+<h2 id="update"><code>Update()</code></h2>
+<p>Updates namespace information - description and tier Id.</p>
+<p><strong>Http</strong></p>
+<pre><code>    PUT api/Tenants/{tenantId}/Namespaces/{namespaceId}
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    The identifier of namespace&#39;s account
+<code>String namespaceId</code>
+    The identifier for the namespace to update
+<code>Namespace namespaceObj</code>
+    The namespace to be updated</p>
+<p><strong>Security</strong>
+    Allowed by Account Administrator :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    The updated :ref:<code>Namespace &lt;NamespaceObj&gt;</code></p>
+<p>|</p>
+<hr>
+<h2 id="delete"><code>Delete()</code></h2>
+<p>Deletes a namespace.</p>
+<p><strong>Http</strong></p>
+<pre><code>DELETE api/Tenants/{tenantId}/Namespaces/{namespaceId}
+</code></pre><p><strong>Parameters</strong></p>
+<p><code>String tenantId</code>
+    The identifier of namespace&#39;s account
+<code>String namespaceId</code>
+    The identifier of the namespace to be deleted</p>
+<p><strong>Security</strong>
+    Allowed by Account Administrator :ref:<code>Role &lt;RoleObj&gt;</code></p>
+<p><strong>Returns</strong>
+    Nothing is returned</p>
+<p>|</p>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ytong3/qi-docfx-test/blob/master/management/namespace.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
